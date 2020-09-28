@@ -1,0 +1,21 @@
+For your reference only!
+
+1. (30%)
+(a) 200us
+(b) __delay_us(200)
+
+2. (25%) Discussed in class
+
+3. (30%)
+(a) Assume in the system, the events happened in the following time order:
+T0: {END, {[0: END], [1: END], [2: END], [3: END]}}
+T1: {E1 , {[0: END], [1: END], [2: END], [3: END]}}
+T2: {E1 , {[0: END], [1: E0 ], [2: END], [3: END]}}
+T3: {E1 , {[0: E3 ], [1: E0 ], [2: END], [3: END]}}
+T4: {E0 , {[0: E3 ], [1: END], [2: END], [3: END]}}
+T5: {E0 , {[0: E3 ], [1: END], [2: END], [3: E2 ]}}
+
+4. (15%)
+(a) 1000
+(b) 2%
+(c) 40%

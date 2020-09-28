@@ -1,0 +1,106 @@
+For your reference only!
+
+1. (20%)
+void restart() {
+    void (*fptr)();
+    fptr = (void (*)())0;
+    fptr();
+}
+
+3. (20%)
+a) // (7.5MHz)
+   #pragma config FNOSC=FRCPLL
+   #pragma config FRCDIV=0
+
+    PLLFBD = 62;            /* M = 64	*/
+    CLKDIVbits.PLLPRE = 1;  /* N1 = 3	*/
+    CLKDIVbits.PLLPOST = 0; /* N2 = 2	*/
+    /*	Initiate Clock Switch to Primary
+     *	Oscillator with PLL (NOSC= 0x3)*/
+    __builtin_write_OSCCONH(0x03);
+    __builtin_write_OSCCONL(0x01);
+    while (OSCCONbits.COSC != 0x3);
+    // Wait for PLL to lock
+    while (OSCCONbits.LOCK != 1);
+
+b) // (8MHz)
+   #pragma config FNOSC=XTPLL
+
+    PLLFBD = 38;            /* M = 40	*/
+    CLKDIVbits.PLLPRE = 0;  /* N1 = 2	*/
+    CLKDIVbits.PLLPOST = 0; /* N2 = 2	*/
+    /*	Initiate Clock Switch to Primary
+     *	Oscillator with PLL (NOSC= 0x3)*/
+    __builtin_write_OSCCONH(0x03);
+    __builtin_write_OSCCONL(0x01);
+    while (OSCCONbits.COSC != 0x3);
+    // Wait for PLL to lock
+    while (OSCCONbits.LOCK != 1);
+
+4. (20%)
+a)
+void initLeds() {
+	DDRA |= 0xF0;
+}
+
+void ledOn(uint8_t sel) {
+	PORTA |= 1<<(sel+4);
+}
+
+void ledOff(uint8_t sel) {
+	PORTA &= ~(1<<(sel+4));
+}
+
+void ledToggle(uint8_t sel) {
+	PORTA ^= (1<<(sel+4));
+}
+
+void ledSet(uint8_t val) {
+	PORTA = (PORTA & 0x0F) | (val<<4);
+}
+
+b)
+void initLeds() {
+    ANSELA &= 0xFF0F;
+    TRISA &= 0xFF0F;
+}
+
+void ledOn(uint8_t sel) {
+    LATA |= 1<<(sel+4);
+}
+
+void ledOff(uint8_t sel) {
+    LATA &= ~(1<<(sel+4));
+}
+
+void ledToggle(uint8_t sel) {
+    LATA ^= (1<<(sel+4));
+}
+
+void ledSet(uint8_t val) {
+    LATA = (LATA & 0xFF0F) | (val<<4);
+}
+
+
+5. (20%)
+int main() {
+    initLeds();
+#ifdef TimerInt
+    configureTimer(period);
+    timerFired = false;
+
+    while (1) {
+        if (timerFired) {
+            timerFired = false;
+            ledToggle(1);
+        }
+    }
+#else
+    while (1) {
+        for (int i=0; i<50; i)) __delay_ms(20);
+        ledToggle(1);
+    }
+#endif
+    return 0;
+}
+

@@ -1,0 +1,35 @@
+For your reference only!
+
+1.
+a) 1000 = 20x + 0.05(8000-x)
+   600 = 19.95x
+   x = 30.0752 hrs
+   x = 0.37594%
+b) 0.37594% x 3600s = 13.534s per hr
+c) (13.534 - x) * 56 = 9.6 * 8 * x
+   x = 5.707 seconds of sampling
+   54.79KBytes of sound per hour
+d) 54.79/2 = 27.4 slices
+
+2. Get answers from software
+
+3.
+a) "hello world!\n" twice
+b) the bottom of main's stack offset -0x14 (20) (SP-0x14)
+  d2:	cd b7       	in	r28, 0x3d	; 61
+  d4:	de b7       	in	r29, 0x3e	; 62
+  d6:	64 97       	sbiw	r28, 0x14	; 20
+d) args are passed in r20-24
+  e2:	44 e1       	ldi	r20, 0x14	; 20
+  e4:	50 e0       	ldi	r21, 0x00	; 0
+  e6:	60 e0       	ldi	r22, 0x00	; 0
+  e8:	71 e0       	ldi	r23, 0x01	; 1
+  ea:	ce 01       	movw	r24, r28
+  ec:	01 96       	adiw	r24, 0x01	; 1
+  ee:	0e 94 86 00 	call	0x10c	; 0x10c <strncpy>
+  result is not passed back
+f) args are passed in r24,25
+  f2:	8e e0       	ldi	r24, 0x0E	; 14
+  f4:	91 e0       	ldi	r25, 0x01	; 1
+  f6:	0e 94 95 00 	call	0x12a	; 0x12a <puts>
+  result is not passed back

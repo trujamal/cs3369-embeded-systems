@@ -1,0 +1,47 @@
+Due on 10/2, submit in hard copy
+
+1. (15%)
+Gcc defines integer types in stdint.h and bool type in stdbool.h.
+a) Report the folders of the two header files in avr-gcc and xc16 respectively.
+b) Report the type definitions of int8_t, uint8_t, int16_t, uint16_t, int32_t, uint32_t, int64_t, uint64_t.
+c) Report the type definition of bool, and the values of true and false.
+
+2. (20%)
+Define a union data struct WORD_T for a uint16_t integer so that a value can be assigned to a WORD_T integer in three ways:
+(1) To assign the value to each bit of the integer,
+(2) To assign the value to each byte of the integer,
+(3) To assign the value to the integer directly.
+a) Show the code of defining the union data struct WORD_T.
+b) Show the code to assign the value 16 to the integer in the three ways.
+Hint: You may refer to the source file ${xc16}/support/PIC24E/h/p24EP512GU810.h. ${xc16} is where you installed the xc16 compiler.
+
+3. (10%) Please read the following code.
+(a) Add one line of C code that defines a macro, so that "main()" will call "foowithdebug()".
+(b) Read gcc command options about macro at https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html
+    Show the screenshot where you add a proper gcc macro option in MPLab X, so that "main()" will call "foowithdebug()".
+
+=== code ===
+int foowithdebug() { ... }
+int foo() { ... }
+int main() {
+#ifdef DEBUG
+    foowithdebug();
+#else
+    foo();
+#endif
+}
+=== end of code ===
+
+4. (20%)
+Read the reference at http://www.nongnu.org/avr-libc/user-manual/pgmspace.html and http://www.nongnu.org/avr-libc/user-manual/group__util__crc.html
+Make a program to calculate CRC-16 of the code in program memory. Assume the code size is always 4KBytes.
+a) Copy & paset your code in report.
+b) Run your program in AVR Studio and show the CRC value of your program in a screen shot of AVR Studio.
+
+5. (35%)
+Read the schematics and datasheets of Atmega128 and Pic24e chips. The two schematic pdfs are included in hw2's package, and the datasheets are in tracs.
+Find three types of pins: (i) reset, (ii) clock and (iii) the IO pins in ports A and B.
+a) Document the three types of pins of Atmega128 in a table. The example table is included in hw2's package.
+b) Document the three types of pins of Pic24e in a table. The example table is included in hw2's package. 
+Add rows to the example tables if necessary. Group IO pins according to their ports and sort them in ascending order.
+

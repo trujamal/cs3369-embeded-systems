@@ -1,0 +1,31 @@
+Due on 10/23, submit in hard copy.
+
+Please follow the example code attached in the package.
+
+1. (20%) Atmega128 and Pic24e have the reset interrupt at the program address 0x0. Write a function reset() that works for both chips to reset a program. Copy and paste your code in report.
+
+2. (20%) Briefly explain what are the functions declared in each of the header files stdlib.h, string.h, math.h, ctype.h and assert.h? (Do not list and explain each function.)
+
+3. (20%) Configure and code clock for Pic24e.
+a) Report how to configure bits to use its fast RC oscillator with PLL to run at 40MHz. Assume the RC's frequency is 7.5MHz.
+b) Report how to configure bits to use its primary crystal (XT) with PLL to run at 40MHz. Assume the external clock is a crystal oscillator of 8MHz.
+Refer to the example code included in case10.clock. Modify the code and copy and paste the code in your report (excluding the comments).
+
+4. (20%) Assume four LEDs are connected to Pins A4..7. Implement the following functions with bit operators only (|, &, ^, ~, <<, |=, &=, ^=).
+(1) Initialize the LEDs.
+(2) Turn one selected LED on.
+(3) Turn one selected LED off.
+(4) Toggle one selected LED.
+(5) Set a value to the LEDs.
+a) Show the code for Atmega128.
+b) Show the code for Pic24ep512gu810.
+You may refer to case12.led for example code.
+
+5. (20%) Make a program to blink/toggle a LED every second with the Atmega128 chip.
+a.1) Show the code to use the timer interrupt for implementation. 
+a.2) Show the screen shot of the stopwatch on the second toggle in AVR Studio.
+b.1) Show the code to use the delay function for implementation.
+b.2) Show the screen shot of the stopwatch on the third toggle in AVR Studio.
+You may call the toggle function in Question 4 to toggle the led and do not need to show the toggle function again.
+Hint: Because the delay function has a maximum delay limit, you will need an internal counter to accumulate delays to one second.
+You may refer to case14.blink for example code.

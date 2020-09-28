@@ -1,0 +1,47 @@
+Due on 9/18, submit in hard copy
+
+1. (30%)
+A sensor works with one AAA battery of 1000mAHr. When the sensor operates, it consumes 20mA current. When the sensor sleeps, it consumes 0.05mA.
+a) In order to work for 8000 hours before replacing the battery, what is the percentage of time for the sensor to operate?
+b) The sensor wakes up once every hour to operate. How long does the sensor operates per hour?
+c) When the sensor operates, it samples sound at 9600samples/second, and the sample quality is 8bits/sample. When operating, the sensor samples first and then transmits the samples to a base station at 56Kbits/second. During the operation time of every hour, how many seconds of sound and how many Bytes of sound can the sensor sample and transmit very hour.
+  Hints:
+    The time must be split to the time of sampling and the time of transmission.
+    The amount of sample bits during the sampling time must be equal to the amount of transmitted bits during the transmission time.
+    Assume no overhead when the sensor switches between sampling and transmission.
+    Note the difference of Bits and Bytes.
+d) The sensor has only a 2KBytes RAM to store the sound data. The sensor must split the operation time into small time slices. In each time slice, the sensor samples sound, fills up the RAM with the sampled data, transmits the data, and iterates on the next time slice. How many time slices are needed during the operation time every hour? How long is each time slice?
+  Hints:
+    The sensor must transmit all data in the RAM to the base station before sampling and storing new sound data to the RAM.
+
+2. (30%)
+Install tool chains for embedded software development. You may need to install an OS VM first, and then install the tools in the OS VM.
+a) If needed, install cross-compilers: avr-gcc (Linux or Windows) and xc16-gcc (Linux, Windows, Mac)
+  Report the following:
+  a.1) The version of the compiler,
+  a.2) The source where you download the tools,
+  a.3) The folder where the compiler is installed,
+  a.4) The names of the avr-xxx executables and the xc16-xxx executables, for example, avr-gcc, avr-objdump and etc.
+b) Install IDE: Atmel Studio (Windows) and MPLab X (Linux, Windows, Mac). Create a new C project in the IDEs, select the target chips we use in class (ATMega128 and PIC24ep512ug810), and select simulator as the target platform.
+  Report the following:
+  b.1) A screen short of a C project in AVR Stuido with the project management window open,
+  b.2) The default gcc options of the project in AVR Studio,
+  b.3) A screen short of a C project in MPLab X with the project management window open,
+  b.4) The default gcc options of the project in MPLab X.
+
+3. (40%)
+Compile the C file hw1.q3.c, and read and understand the assembly code of the program.
+First, run "avr-gcc -g -mmcu=atmega128 -o hw1.q3.avr hw1.q3.c" to compile the code.
+Then, run "avr-objdump -j .data -j .text -DS hw1.q3.avr > hw1.q3.avr.asm" to dump the assembly code.
+Both "hw1.q3.avr" and "hw1.q3.avr.asm" are provided to you already in the package. But, you still need to complete the first two steps as a practice.
+Read "hw1.q3.avr.asm" in the package, and report the following:
+a) Convert all bytes in the .data section to ASCII chars. Discuss what is the data in the .data section.
+b) How is the char array buf[] represented in AVR?
+c) Copy and paste the assembly code of the strncpy() function, and comment each line of the assembly code.
+d) Discuss how the arguments are passed to strncpy(), and how the return value is passed back to the calling function.
+e) Copy and paste the assembly code of the puts() function, and comment each line of the assembly code.
+f) Discuss how the arguments are passed to puts(), and how the return value is passed back to the calling function.
+
+
+
+

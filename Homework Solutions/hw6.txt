@@ -1,0 +1,58 @@
+Due at the beginning of the final exam, submit in hard copy.
+
+1. (20%)
+An application has three events: E1, E2 and E3. The application runs in an embedded system with a 40MHz clock. E1 occurs every 100ms and needs 20ms for execution. E2 occurs every 30ms and needs 3ms for execution. E3 occurs every 40ms and needs 3ms for execution.
+a.1) Over 3 seconds, how many times do E1, E2 and E3 occur respectively, and how much execution time do E1, E2 and E3 need respectively?
+a.2) Can E1, E2 and E3 be scheduled in this application?
+
+Power is proportional to frequency, i.e. P=cF. Assume the operating power at 40MHz is 40mW and the idle power at any frequency is 0.1mW. 
+b.1) To reduce power, the application wants to lower the clock frequency. The three events will occur at the same rate, but their execution times will be enlarged. What is the minimum frequency that the three events can be scheduled?
+b.2) Over 3 seconds, how much energy is consumed at 40MHz.
+b.3) Over 3 seconds, how much energy is consumed at the minimum frequency?
+
+2. (20%)
+The program below uses sleep to save power when no events to handle. Read http://www.nongnu.org/avr-libc/user-manual/group__avr__sleep.html
+a) Find and list all sleep modes defined for Atmega128 in avr/sleep.h
+b) Implement the setSleep() function for Atmega128 so that the CPU goes idle when sleeping. Copy and paste code in your report.
+c) Implement the sleep() function for Atmega128. Copy and paste code in your report.
+
+int main() {
+    setSleep();
+    initQueue(&queue);
+    while (1) {
+        // queue loop
+        while (!isEmpty(&queue)) {
+            // process the events in queue
+            uint8_t event = pop(&queue);
+            handleEvent(event);
+        }
+        sleep();
+    }
+}
+
+3. (20%)
+Below is a struct for storing meta information of a program in the program memory space.
+
+typedef struct _vol_meta {    // meta data of a program
+    uint8_t ver_major;   // major version number
+    uint8_t ver_minor;   // minor version number
+    uint16_t crc;        // crc code of the app in the volume, excluding meta
+    uint16_t size;       // in words, exact size of the app, excluding meta
+    uint8_t pagenum;     // the number of pages of the app, excluding meta
+    uint8_t rownum;      // the number of rows of the app, excluding meta
+    uint8_t name[15];    // name of program
+} VOL_META;
+
+However, if we store the meta info in pic24, the above struct VOL_META will not work. In the program memory of pic24, every four bytes are 0x00XXXXXX, where the MSB does not exist in memory. Therefore, we have to insert alignment bytes into the struct VOL_META to ensure the bytes of meta info will not reside on the MSB. Redesign the struct VOL_META and show your struct in your report.
+
+4. (20%)
+Read the flow chart of Figure 7-2 of Chapter 7 in the textbook. Discuss the following.
+a) If the step of "load new code to scratch" goes wrong, how to detect the error, and how to correct the error.
+b) If the step of "erase code sector" goes wrong, how to detect the error, and how to correct the error.
+c) If the step of "program code" goes wrong, how to detect the error, and how to correct the error.
+
+5. (20%)
+Follow Table 9-1 of Chapter 9 in the textbook.
+a) Build a table of dividing 5 until having an error of smaller than 0.1%.
+b) Build a table of dividing 9 until having an error of smaller than 0.1%.
+

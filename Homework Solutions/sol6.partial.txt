@@ -1,0 +1,28 @@
+Only partial solution for your reference.
+
+1. a.1) E1: 30, 600ms, E2: 100, 300ms, E3: 75, 225ms
+b.2) 1.125*40 + (3-1.125)*0.1 = 45.1875mJ
+
+3.
+typedef struct _vol_meta {    // meta data of a program
+    uint32_t ver_major : 8;   // major version number
+    uint32_t crc : 16;        // crc code of the app in the volume, excluding meta
+    uint32_t : 8;
+    /* not complete struct */
+} VOL_META;
+
+4.
+a) integrity check of new code. resend.
+b) read code memory to check if memory is set to erased status. reerase.
+
+5.
+b)   2,   16, 12.50%
+     4,   32, 12.50%
+     7,   64, -1.56%
+    14,  128, -1.56%
+    28,  256, -1.56%
+    57,  512,  0.20%
+   114, 1024,  0.20%
+   228, 2048,  0.20%
+   455, 4096, -0.02%
+

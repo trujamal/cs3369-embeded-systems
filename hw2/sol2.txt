@@ -1,0 +1,59 @@
+For your reference only!
+
+1. In stdint.h and stdbool.h
+
+2. (a) typedef union {
+    struct {
+        unsigned B0: 1;
+        unsigned B1: 1;
+        unsigned B2: 1;
+        unsigned B3: 1;
+        unsigned B4: 1;
+        unsigned B5: 1;
+        unsigned B6: 1;
+        unsigned B7: 1;
+        unsigned B8: 1;
+        unsigned B9: 1;
+        unsigned B10: 1;
+        unsigned B11: 1;
+        unsigned B12: 1;
+        unsigned B13: 1;
+        unsigned B14: 1;
+        unsigned B15: 1;
+    };
+    struct {
+        uint8_t LB;
+        uint8_t HB;
+    };
+    uint16_t val;
+} WORD_T;
+
+(b) WORD_T w;
+w.val=16;
+w.LB=16;
+w.HB=0;
+w.B0=0;
+w.B1=0;
+w.B2=0;
+w.B3=0;
+w.B4=1;
+w.B5=0;
+w.B..=0;
+w.B15=0;
+
+3. (a) #define DEBUG
+(b) -DDEBUG
+
+4.
+uint16_t checkcrc() {
+    uint16_t i, crc;
+    uint8_t byte;
+    for (i=0, crc=0; i<4096; i++) {
+        byte = pgm_read_byte(i);
+        crc = _crc16_update(crc, byte);
+    }
+    return crc;
+}
+}
+
+5. Find info from datasheets and schematics.

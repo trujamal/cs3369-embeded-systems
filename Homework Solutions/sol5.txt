@@ -1,0 +1,35 @@
+For your reference only!
+
+1. (20%)
+a) data: 0x1000, 0xDFFF, 0xD000
+reset: 0x0, 0x3, 0x4
+ivt: 0x4, 0x200, 0x1FC
+program: 0x200, 0x557FD, 0x555FE
+
+2. (20%)
+     text	   data	    bss	    dec	    hex
+O0   1442	      0	     77	   1519	    5ef
+O1    914	      0	     77	    991	    3df
+O2    898	      0	     77	    975	    3cf
+O3    898	      0	     77	    975	    3cf
+Os    902	      0	     77	    979	    3d3
+
+3. (20%)
+led, 5.75us
+delay, 10001.25us
+config, 19.75us
+
+4. (20%)
+a) void bar(uint8_t* dst, uint8_t* src, uint8_t len) {
+    while (len--) {
+        dst[len] = src[len];
+        len--;
+        dst[len] = src[len];
+    }
+}
+b) O0: foo: (1193.75us) 33.00us, 1226.75us, bar: (993.75us) 1226.75us, 2220.50us
+c) O1: foo: (379.00us) 17.75us, 396.75us, bar: (366.50us) 396.75us, 763.25us
+
+5. (20%)
+a) O0: table: (205.50us) 1292.75us, 1498.25, function: (333.00us) 1498.25us, 1831.25
+b) O1: table: (70.75us) 1203.75us, 1274.50, function: (62.25us) 1274.50us, 1336.75

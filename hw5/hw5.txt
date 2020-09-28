@@ -1,0 +1,27 @@
+Due on 11/27, submit in hard copy.
+
+1. (20%)
+Read the linker script of pic24ep in hw5.q1. Run a pic24ep program in MPLab X, and watch memory of the program in debugger.
+a) Fill the table in hw5.q1.docx.
+b) Show a screen shot of watching memory in debugger.
+
+2. (20%) Use avrgcc to compile the code in hw5.q2 with different optimizations: O0, O1, O2, O3, Os.
+Makefile is provided, and you may run "make" to get the results.
+Otherwise, you can refer to Makefile to choose proper compiler command and options to get results.
+Copy and paste your results in the table in hw5.q2.docx.
+
+3. (20%) Run the code of hw5.q3 in the simulator of AVR Studio.
+Use the stopwatch to profile the time of ledToggle, _delay_ms, and configureTimer.
+a) Describe how you profile their times, such as where to set break points and how many profiling trials.
+b) Show the profiling results in report.
+
+4. (20%)
+a) Implement the bar function in hw5.q4.c. The bar function should do the same job as the foo function, but unroll the while loop of the foo function.
+b) Compile hw5.q4 with no optimization option O0 and run the program in AVR Studio. Use stopwatch to measure the times of running the foo function and the bar function. Report the times of the two functions.
+c) Compile hw5.q4 with optimization option O1 and run the program in AVR Studio. Use stopwatch to measure the times of running the foo function and the bar function. Report the times of the two functions.
+
+5. (20%)
+a) Run the program in hw5.q5 with no optimization option O0 in AVR Stduio. Use stopwatch to measure the times of the crc16_foo function and the crc16_bar function. Report the times of the two functions.
+b) Run the program in hw5.q5 with optimization option O1 in AVR Stduio. Use stopwatch to measure the times of the crc16_foo function and the crc16_bar function. Report the times of the two functions.
+c) You may observe that using table is faster than no table with O0, but using table is slower than no table with O1. Analyze the reason for this conflicting result.
+
